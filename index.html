@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crossword Gift</title>
+  <title>Innocent Portal</title>
   <style>
     body {
-      background: radial-gradient(circle at center, #1e1e2f, #0c0c15);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #101020, #000);
+      font-family: 'Orbitron', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -15,44 +15,33 @@
       padding: 20px;
       min-height: 100vh;
       margin: 0;
-      color: #f0f0f0;
+      color: #00f5d4;
     }
     h1 {
-      margin-bottom: 10px;
-      color: #ffca28;
-      text-shadow: 0 0 10px #ffc107;
+      margin-bottom: 20px;
+      color: #00f5d4;
+      text-shadow: 0 0 10px #00f5d4, 0 0 20px #00c2cb;
     }
-    table {
-      border-collapse: collapse;
-      margin-bottom: 15px;
-    }
-    td {
-      width: 40px;
-      height: 40px;
-      border: 1px solid #555;
-      background-color: white;
-      position: relative;
+    .lock-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     input {
-      width: 100%;
-      height: 100%;
+      padding: 10px;
+      font-size: 16px;
       border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      width: 240px;
+      background: #0a0a1a;
+      color: #00f5d4;
+      border: 1px solid #00f5d4;
       text-align: center;
-      font-size: 18px;
-      text-transform: uppercase;
-      background: transparent;
-    }
-    .number {
-      position: absolute;
-      top: 2px;
-      left: 3px;
-      font-size: 10px;
-      color: black;
-      font-weight: bold;
     }
     button {
       padding: 10px 20px;
-      background: linear-gradient(145deg, #0077ff, #00eaff);
+      background: linear-gradient(145deg, #00eaff, #0077ff);
       color: white;
       border: none;
       border-radius: 5px;
@@ -62,112 +51,35 @@
     }
     iframe {
       display: none;
-      margin-top: 20px;
+      margin-top: 30px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    }
-    .clues {
-      margin: 15px 0;
-      font-size: 14px;
-      max-width: 600px;
-    }
-    .clues p {
-      margin: 4px 0;
-    }
-    .clues strong::before {
-      content: '➡️ ';
-      color: #00eaff;
-    }
-    .highlight {
-      background-color: rgba(0, 255, 255, 0.2);
-      border: 2px solid #00eaff;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.5); }
-      70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
     }
   </style>
 </head>
 <body>
-  <h1>Crossword Gift 🎁</h1>
-  <div class="clues">
-    <p><strong>1. Across (Row 1, Cols 1–6):</strong> What are you to me ❤️ (6)</p>
-    <p><strong>2. Down (Col 1, Rows 1–3):</strong> What do I call you 💬 (3)</p>
-    <p><strong>3. Across (Row 2, Cols 3–6):</strong> Where my heart lies 🏡 (4)</p>
-    <p><strong>4. Down (Col 3, Rows 2–4):</strong> You're always this to me 🌟 (4)</p>
-    <p><strong>5. Across (Row 3, Cols 5–6):</strong> What you give me every day ☀️ (4)</p>
+  <h1>🔐 Access Portal</h1>
+  <div class="lock-container">
+    <input type="text" id="accessKey" placeholder="Enter your key..." />
+    <button onclick="unlock()">Unlock</button>
   </div>
-  <table>
-    <tbody>
-      <tr>
-        <td class="highlight"><span class="number">1</span><input maxlength="1" data-id="F"></td>
-        <td class="highlight"><input maxlength="1" data-id="R"></td>
-        <td class="highlight"><input maxlength="1" data-id="I"></td>
-        <td class="highlight"><input maxlength="1" data-id="E"></td>
-        <td class="highlight"><input maxlength="1" data-id="N"></td>
-        <td class="highlight"><input maxlength="1" data-id="D"></td>
-      </tr>
-      <tr>
-        <td class="highlight"><span class="number">2</span><input maxlength="1" data-id="M"></td>
-        <td style="background:black;"></td>
-        <td class="highlight"><span class="number">4</span><input maxlength="1" data-id="H"></td>
-        <td class="highlight"><input maxlength="1" data-id="O"></td>
-        <td class="highlight"><span class="number">3</span><input maxlength="1" data-id="M"></td>
-        <td class="highlight"><input maxlength="1" data-id="E"></td>
-      </tr>
-      <tr>
-        <td class="highlight"><span class="number">5</span><input maxlength="1" data-id="S"></td>
-        <td style="background:black;"></td>
-        <td class="highlight"><input maxlength="1" data-id="L"></td>
-        <td style="background:black;"></td>
-        <td class="highlight"><input maxlength="1" data-id="H"></td>
-        <td class="highlight"><input maxlength="1" data-id="O"></td>
-      </tr>
-      <tr>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-        <td class="highlight"><input maxlength="1" data-id="P"></td>
-        <td style="background:black;"></td>
-        <td class="highlight"><input maxlength="1" data-id="P"></td>
-        <td class="highlight"><input maxlength="1" data-id="E"></td>
-      </tr>
-      <tr>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-      </tr>
-      <tr>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-        <td style="background:black;"></td>
-      </tr>
-    </tbody>
-  </table>
-  <button onclick="checkCrossword()">Submit</button>
-  <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/iYxBUdMHahA" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <iframe
+    id="video"
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/iYxBUdMHahA?autoplay=1"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
   <script>
-    function checkCrossword() {
-      const inputs = document.querySelectorAll("input[data-id]");
-      let correct = true;
-      inputs.forEach(input => {
-        const expected = input.getAttribute("data-id");
-        const actual = input.value.toUpperCase();
-        if (expected !== actual) {
-          correct = false;
-        }
-      });
-      if (correct) {
+    function unlock() {
+      const key = document.getElementById("accessKey").value.trim();
+      if (key.toLowerCase() === "mr and ms.innocent") {
         document.getElementById("video").style.display = "block";
       } else {
-        alert("Keep trying! 🌟");
+        alert("Incorrect key 💔 Please try again.");
       }
     }
   </script>
