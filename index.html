@@ -3,54 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sudoku Gift</title>
+  <title>Crossword Gift</title>
   <style>
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      padding: 20px;
+      min-height: 100vh;
       margin: 0;
       color: white;
     }
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     table {
       border-collapse: collapse;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     td {
-      border: 2px solid #555;
       width: 40px;
       height: 40px;
-      text-align: center;
-      background-color: #f0f0f0;
+      border: 1px solid #555;
+      background-color: white;
     }
     input {
       width: 100%;
       height: 100%;
+      border: none;
       text-align: center;
       font-size: 18px;
-      border: none;
-      background: transparent;
-    }
-    input:disabled {
-      background-color: #ccc;
-      color: #333;
-      font-weight: bold;
+      text-transform: uppercase;
     }
     button {
       padding: 10px 20px;
-      background-color: #00bcd4;
+      background-color: #2196f3;
+      color: white;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
       font-size: 16px;
-      color: white;
+      cursor: pointer;
     }
     iframe {
       display: none;
@@ -58,51 +53,70 @@
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
+    .clues {
+      margin: 15px 0;
+      font-size: 14px;
+      max-width: 600px;
+    }
+    .clues p {
+      margin: 4px 0;
+    }
   </style>
 </head>
 <body>
-  <h1>Mini Sudoku Gift 🎁</h1>
-  <table id="sudoku">
+  <h1>Crossword Gift 🎁</h1>
+  <div class="clues">
+    <p>1. Across: What she is to you ❤️ (6)</p>
+    <p>2. Down: You always call her this (3)</p>
+    <p>3. Across: Where your heart lies (4)</p>
+    <p>4. Down: You met on this day (3)</p>
+    <p>5. Across: What you feel for her (4)</p>
+  </div>
+  <table>
     <tbody>
-      <script>
-        const preset = [
-          ["", "", 1, "", "", 4],
-          [2, "", "", "", 6, ""],
-          ["", 3, "", 1, "", ""],
-          ["", "", 5, "", 3, ""],
-          ["", 6, "", "", "", 2],
-          [4, "", "", 6, "", ""]
-        ];
-        for (let r = 0; r < 6; r++) {
-          document.write("<tr>");
-          for (let c = 0; c < 6; c++) {
-            const val = preset[r][c];
-            if (val !== "") {
-              document.write(`<td><input type='text' value='${val}' disabled></td>`);
-            } else {
-              document.write("<td><input type='text' maxlength='1'></td>");
-            }
-          }
-          document.write("</tr>");
-        }
-      </script>
+      <tr>
+        <td><input maxlength="1" data-id="F"></td>
+        <td><input maxlength="1" data-id="R"></td>
+        <td><input maxlength="1" data-id="I"></td>
+        <td><input maxlength="1" data-id="E"></td>
+        <td><input maxlength="1" data-id="N"></td>
+        <td><input maxlength="1" data-id="D"></td>
+      </tr>
+      <tr>
+        <td><input maxlength="1" data-id="M"></td>
+        <td style="background:black;"></td>
+        <td><input maxlength="1" data-id="H"></td>
+        <td><input maxlength="1" data-id="O"></td>
+        <td><input maxlength="1" data-id="M"></td>
+        <td><input maxlength="1" data-id="E"></td>
+      </tr>
+      <tr>
+        <td><input maxlength="1" data-id="S"></td>
+        <td style="background:black;"></td>
+        <td><input maxlength="1" data-id="L"></td>
+        <td style="background:black;"></td>
+        <td><input maxlength="1" data-id="L"></td>
+        <td><input maxlength="1" data-id="O"></td>
+      </tr>
     </tbody>
   </table>
-  <button onclick="checkWin()">Submit</button>
+  <button onclick="checkCrossword()">Submit</button>
   <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/iYxBUdMHahA" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
   <script>
-    function checkWin() {
-      const inputs = document.querySelectorAll("#sudoku input:not([disabled])");
-      let allFilled = true;
+    function checkCrossword() {
+      const inputs = document.querySelectorAll("input[data-id]");
+      let correct = true;
       inputs.forEach(input => {
-        if (input.value === "") allFilled = false;
+        const expected = input.getAttribute("data-id");
+        const actual = input.value.toUpperCase();
+        if (expected !== actual) {
+          correct = false;
+        }
       });
-
-      if (allFilled) {
+      if (correct) {
         document.getElementById("video").style.display = "block";
       } else {
-        alert("Please complete the Sudoku first ✨");
+        alert("Keep trying! 🌟");
       }
     }
   </script>
