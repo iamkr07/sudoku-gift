@@ -6,7 +6,7 @@
   <title>Crossword Gift</title>
   <style>
     body {
-      background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+      background: radial-gradient(circle at center, #1e1e2f, #0c0c15);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       flex-direction: column;
@@ -15,10 +15,12 @@
       padding: 20px;
       min-height: 100vh;
       margin: 0;
-      color: white;
+      color: #f0f0f0;
     }
     h1 {
       margin-bottom: 10px;
+      color: #ffca28;
+      text-shadow: 0 0 10px #ffc107;
     }
     table {
       border-collapse: collapse;
@@ -29,6 +31,7 @@
       height: 40px;
       border: 1px solid #555;
       background-color: white;
+      position: relative;
     }
     input {
       width: 100%;
@@ -37,15 +40,25 @@
       text-align: center;
       font-size: 18px;
       text-transform: uppercase;
+      background: transparent;
+    }
+    .number {
+      position: absolute;
+      top: 2px;
+      left: 3px;
+      font-size: 10px;
+      color: black;
+      font-weight: bold;
     }
     button {
       padding: 10px 20px;
-      background-color: #2196f3;
+      background: linear-gradient(145deg, #0077ff, #00eaff);
       color: white;
       border: none;
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
     iframe {
       display: none;
@@ -61,50 +74,64 @@
     .clues p {
       margin: 4px 0;
     }
+    .clues strong::before {
+      content: '➡️ ';
+      color: #00eaff;
+    }
+    .highlight {
+      background-color: rgba(0, 255, 255, 0.2);
+      border: 2px solid #00eaff;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.5); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
+    }
   </style>
 </head>
 <body>
   <h1>Crossword Gift 🎁</h1>
   <div class="clues">
-    <p>1. Across: What she is to you ❤️ (6)</p>
-    <p>2. Down: What you always call her 💬 (3)</p>
-    <p>3. Across: Where your heart lies 🏡 (4)</p>
-    <p>4. Down: She’s always this to you 🌟 (4)</p>
-    <p>5. Across: What she gives you every day ☀️ (4)</p>
+    <p><strong>1. Across (Row 1, Cols 1–6):</strong> What she is to you ❤️ (6)</p>
+    <p><strong>2. Down (Col 1, Rows 1–3):</strong> What you always call her 💬 (3)</p>
+    <p><strong>3. Across (Row 2, Cols 3–6):</strong> Where your heart lies 🏡 (4)</p>
+    <p><strong>4. Down (Col 3, Rows 2–4):</strong> She’s always this to you 🌟 (4)</p>
+    <p><strong>5. Across (Row 3, Cols 5–6):</strong> What she gives you every day ☀️ (4)</p>
   </div>
   <table>
     <tbody>
       <tr>
-        <td><input maxlength="1" data-id="F"></td>
-        <td><input maxlength="1" data-id="R"></td>
-        <td><input maxlength="1" data-id="I"></td>
-        <td><input maxlength="1" data-id="E"></td>
-        <td><input maxlength="1" data-id="N"></td>
-        <td><input maxlength="1" data-id="D"></td>
+        <td class="highlight"><span class="number">1</span><input maxlength="1" data-id="F"></td>
+        <td class="highlight"><input maxlength="1" data-id="R"></td>
+        <td class="highlight"><input maxlength="1" data-id="I"></td>
+        <td class="highlight"><input maxlength="1" data-id="E"></td>
+        <td class="highlight"><input maxlength="1" data-id="N"></td>
+        <td class="highlight"><input maxlength="1" data-id="D"></td>
       </tr>
       <tr>
-        <td><input maxlength="1" data-id="M"></td>
+        <td class="highlight"><span class="number">2</span><input maxlength="1" data-id="M"></td>
         <td style="background:black;"></td>
-        <td><input maxlength="1" data-id="H"></td>
-        <td><input maxlength="1" data-id="O"></td>
-        <td><input maxlength="1" data-id="M"></td>
-        <td><input maxlength="1" data-id="E"></td>
+        <td class="highlight"><span class="number">4</span><input maxlength="1" data-id="H"></td>
+        <td class="highlight"><input maxlength="1" data-id="O"></td>
+        <td class="highlight"><span class="number">3</span><input maxlength="1" data-id="M"></td>
+        <td class="highlight"><input maxlength="1" data-id="E"></td>
       </tr>
       <tr>
-        <td><input maxlength="1" data-id="S"></td>
+        <td class="highlight"><span class="number">5</span><input maxlength="1" data-id="S"></td>
         <td style="background:black;"></td>
-        <td><input maxlength="1" data-id="L"></td>
+        <td class="highlight"><input maxlength="1" data-id="L"></td>
         <td style="background:black;"></td>
-        <td><input maxlength="1" data-id="H"></td>
-        <td><input maxlength="1" data-id="O"></td>
+        <td class="highlight"><input maxlength="1" data-id="H"></td>
+        <td class="highlight"><input maxlength="1" data-id="O"></td>
       </tr>
       <tr>
         <td style="background:black;"></td>
         <td style="background:black;"></td>
-        <td><input maxlength="1" data-id="P"></td>
+        <td class="highlight"><input maxlength="1" data-id="P"></td>
         <td style="background:black;"></td>
-        <td><input maxlength="1" data-id="P"></td>
-        <td><input maxlength="1" data-id="E"></td>
+        <td class="highlight"><input maxlength="1" data-id="P"></td>
+        <td class="highlight"><input maxlength="1" data-id="E"></td>
       </tr>
     </tbody>
   </table>
